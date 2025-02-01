@@ -1,0 +1,68 @@
+<%- include("../layouts/header") %>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div class="page-wrapper">
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">Add category</h4>
+                        <div class="ml-auto text-right">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Admin</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <form class="form-horizontal" method="post" action="/category/insertCategoryData">
+                                <div class="card-body">
+                                    <h4 class="card-title text-center">Category</h4>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 text-right control-label col-form-label">Category
+                                            Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" name="categoryName"
+                                                placeholder="Enter category name"
+                                                value="<% if(oldData && oldData.categoryName) { %> <%=oldData.categoryName%> <% } %>">
+                                            <% if(errorsData && errorsData.categoryName) { %>
+                                                <span style="color: red;">
+                                                    <%= errorsData.categoryName.msg %>
+                                                </span>
+                                                <% } %>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="border-top">
+                                    <div class="card-body text-center">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    </html>
+
+    <%- include("../layouts/footer") %>

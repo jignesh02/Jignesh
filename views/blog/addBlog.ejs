@@ -1,0 +1,125 @@
+<%- include("../layouts/header") %>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div class="page-wrapper">
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">Add blog</h4>
+                        <div class="ml-auto text-right">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Add blog</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <form class="form-horizontal" method="post" action="/blog/insertBlogData"
+                                enctype="multipart/form-data">
+                                <div class="card-body">
+                                    <h4 class="card-title text-center">Blog</h4>
+
+                                    <div class="form-group row">
+                                        <label for="fname"
+                                            class="col-sm-3 text-right control-label col-form-label">Category</label>
+                                        <div class="col-sm-9">
+                                            <select name="categoryID" class="form-control">
+                                                <option value="">---Select category---</option>
+                                                <% categoryData.map((v,i)=>{ %>
+                                                    <option value="<%= v.id %>">
+                                                        <%= v.categoryName %>
+                                                    </option>
+                                                    <% }) %>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="fname"
+                                            class="col-sm-3 text-right control-label col-form-label">Title</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="fname" name="blogTitle"
+                                                placeholder="Enter blog title">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row">
+                                        <label for="uploadImage"
+                                            class="col-sm-3 text-right control-label col-form-label">Upload
+                                            Image</label>
+                                        <div class="col-md-9">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="validatedCustomFile"
+                                                    name="image">
+                                                <label class="custom-file-label" for="validatedCustomFile">Choose
+                                                    file...</label>
+                                                <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="fname"
+                                            class="col-sm-3 text-right control-label col-form-label">Description</label>
+                                        <div class="col-sm-9">
+                                            <textarea name="blogDescription" placeholder="Enter description"
+                                                class="form-control"></textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="border-top">
+                                    <div class="card-body text-center">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    </html>
+
+    <%- include("../layouts/footer") %>
+
+        <script src="https://cdn.tiny.cloud/1/a3mycq8y4v9thyn83ewjg01syrds7p7cftez1dybbyf22qcx/tinymce/7/tinymce.min.js"
+            referrerpolicy="origin"></script>
+        <script>
+            tinymce.init({
+                selector: 'textarea',
+                plugins: [
+                    'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
+
+                    'checklist', 'mediaembed', 'casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown', 'importword', 'exportword', 'exportpdf'
+                ],
+                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                tinycomments_mode: 'embedded',
+                tinycomments_author: 'Author name',
+                mergetags_list: [
+                    { value: 'First.Name', title: 'First Name' },
+                    { value: 'Email', title: 'Email' },
+                ],
+                ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
+            });
+        </script>

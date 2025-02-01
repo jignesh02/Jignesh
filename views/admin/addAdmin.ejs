@@ -1,0 +1,218 @@
+<%- include("../layouts/header") %>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div class="page-wrapper">
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">Add admin</h4>
+                        <div class="ml-auto text-right">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Admin</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <form class="form-horizontal" method="post" action="/insertFormData"
+                                enctype="multipart/form-data">
+                                <div class="card-body">
+                                    <h4 class="card-title text-center">Admin</h4>
+                                    <div class="form-group row">
+                                        <label for="fname"
+                                            class="col-sm-3 text-right control-label col-form-label">First Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="fname" name="fname"
+                                                value="<% if(oldData && oldData.fname) { %> <%=oldData.fname%> <% } %>"
+                                                placeholder="First Name Here">
+                                            <% if(errorsData && errorsData.fname) { %>
+                                                <span style="color: red;">
+                                                    <%= errorsData.fname.msg %>
+                                                </span>
+                                                <% } %>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Last
+                                            Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="lname" name="lname"
+                                                placeholder="Last Name Here" value="<% if(oldData && oldData.lname) { %> <%=oldData.lname%> <% } %>">
+                                            <% if(errorsData && errorsData.lname) { %>
+                                                <span style="color: red;">
+                                                    <%= errorsData.lname.msg %>
+                                                </span>
+                                                <% } %>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="email1"
+                                            class="col-sm-3 text-right control-label col-form-label">Email</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="email" name="email"
+                                                placeholder="Enter email Here" value="<% if(oldData && oldData.email) { %> <%=oldData.email%> <% } %>">
+                                            <% if(errorsData && errorsData.email) { %>
+                                                <span style="color: red;">
+                                                    <%= errorsData.email.msg %>
+                                                </span>
+                                                <% } %>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="password"
+                                            class="col-sm-3 text-right control-label col-form-label">Password</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="password" name="password"
+                                                placeholder="Password Here" value="<% if(oldData && oldData.password) { %> <%=oldData.password%> <% } %>">
+                                            <% if(errorsData && errorsData.password) { %>
+                                                <span style="color: red;">
+                                                    <%= errorsData.password.msg %>
+                                                </span>
+                                                <% } %>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="message"
+                                            class="col-sm-3 text-right control-label col-form-label">Gender</label>
+                                        <div class="col-md-9">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input"
+                                                    id="customControlValidation1" name="gender" value="Male"
+                                                    <% if(oldData && oldData.gender=='Male'){ %> <%= 'checked' %> <%}%>
+                                                    >
+                                                <label class="custom-control-label"
+                                                    for="customControlValidation1">Male</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input"
+                                                    id="customControlValidation2" name="gender" value="Female"
+                                                    <% if(oldData && oldData.gender=='Female'){ %> <%= 'checked' %> <%}%>
+                                                    >
+                                                <label class="custom-control-label"
+                                                    for="customControlValidation2">Female</label>
+                                            </div>
+                                            <% if(errorsData && errorsData.gender) { %>
+                                                <span style="color: red;">
+                                                    <%= errorsData.gender.msg %>
+                                                </span>
+                                                <% } %>
+                                        </div>
+                                    </div>
+
+                                    <% cityName=["Surat", "Delhi" , "Rajkot" , "Bengaluru" , "Chennai" , "Pune"
+                                        , "Mumbai" ] %>
+                                        <div class="form-group row">
+                                            <label for="message"
+                                                class="col-sm-3 text-right control-label col-form-label">Select
+                                                city</label>
+                                            <div class="col-md-9">
+                                                <select class="select2 form-control custom-select" name="city"
+                                                    style="width: 100%; height:36px;">
+                                                    <option value="">-- Select city --</option>
+                                                    <% cityName.map((v,i)=> { %>
+                                                        <option value="<%= v %>" <% if(oldData && oldData.city){ %>
+                                                            <% if(oldData.city ==v){ %>
+                                                            <%= 'selected' %> 
+                                                            <% } %>
+                                                            <% } %> >
+                                                            <%= v %>
+                                                        </option>
+                                                        <% }) %>
+                                                </select>
+                                                <% if(errorsData && errorsData.city) { %>
+                                                    <span style="color: red;">
+                                                        <%= errorsData.city.msg %>
+                                                    </span>
+                                                    <% } %>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="message"
+                                                class="col-sm-3 text-right control-label col-form-label">Hobby</label>
+                                            <div class="col-md-9">
+                                                <div class="custom-control custom-checkbox mr-sm-2">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                        id="customControlAutosizing1" name="hobby" value="Reading"  <% if(oldData && oldData.hobby) { if(oldData.hobby.includes("Reading")){ %> <%= "checked" %> <%}} %> >
+                                                    <label class="custom-control-label"
+                                                        for="customControlAutosizing1">Reading</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox mr-sm-2">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                        id="customControlAutosizing2" name="hobby" value="Coding" <% if(oldData && oldData.hobby) { if(oldData.hobby.includes("Coding")){ %> <%= "checked" %> <%}} %> >
+                                                    <label class="custom-control-label"
+                                                        for="customControlAutosizing2">Coding</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox mr-sm-2">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                        id="customControlAutosizing3" name="hobby" value="Painting" <% if(oldData && oldData.hobby) { if(oldData.hobby.includes("Painting")){ %> <%= "checked" %> <%}} %> >
+                                                    <label class="custom-control-label"
+                                                        for="customControlAutosizing3">Painting</label>
+                                                </div>
+                                                <% if(errorsData && errorsData.hobby) { %>
+                                                    <span style="color: red;">
+                                                        <%= errorsData.hobby.msg %>
+                                                    </span>
+                                                    <% } %>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="uploadImage"
+                                                class="col-sm-3 text-right control-label col-form-label">Upload
+                                                Image</label>
+                                            <div class="col-md-9">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input"
+                                                        id="validatedCustomFile" name="image">
+                                                    <label class="custom-file-label" for="validatedCustomFile">Choose
+                                                        file...</label>
+                                                    <div class="invalid-feedback">Example invalid custom file feedback
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="message"
+                                                class="col-sm-3 text-right control-label col-form-label">Message</label>
+                                            <div class="col-sm-9">
+                                                <textarea class="form-control" id="message" name="message"><% if(oldData && oldData.message) { %> <%=oldData.message%> <% } %></textarea>
+                                                <% if(errorsData && errorsData.message) { %>
+                                                    <span style="color: red;">
+                                                        <%= errorsData.message.msg %>
+                                                    </span>
+                                                    <% } %>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="border-top">
+                                    <div class="card-body text-center">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    </html>
+
+    <%- include("../layouts/footer") %>

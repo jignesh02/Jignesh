@@ -1,0 +1,52 @@
+.register-section {
+    width: 960px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+  }
+  .register-section h2 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  .register-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .register-form table {
+    width: 100%;
+    max-width: 700px;
+  }
+  .register-form td {
+    padding: 10px;
+    font-size: 18px;
+    color: #333;
+    text-align: left;
+  }
+  .register-form input[type="text"],
+  .register-form input[type="email"]
+  {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 5px;
+    background: transparent;
+  }
+  .register-form input[type="submit"] {
+    width: 150px;
+    padding: 10px;
+    font-size: 18px;
+    background: #1c1c1c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+  .register-form input[type="submit"]:hover {
+    background: #444;
+  }

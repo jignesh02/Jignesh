@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.header {
+  background-color: #1c1c1c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  padding: 10px 20px;
+  color: white;
+}
+.title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 40px;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  text-align: center;
+}
+.title h1 {
+  margin: 0;
+  font-size: 60px;
+  color: rgb(238, 238, 238);
+}
+.back-btn button {
+  width: 50px;
+  padding: 10px 0;
+  font-size: 24px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.back-btn button:hover {
+  background-color: #555;
+}
+.back-arrow {
+  text-decoration: none;
+  color: white;
+}
+.blog-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.post-info {
+  padding: 20px;
+}
+.post-image {
+  margin-top: 20px;
+  width: 960px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.post-title {
+  margin-top: 40px;
+  font-size: 40px;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+.post-content {
+  margin-top: 20px;
+  font-size: 24px !important;
+  color: #666;
+  line-height: 1.8;
+}
+.comment-section {
+  width: 960px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 10px;
+  text-align: center;
+}
+.comment-section h2 {
+  font-size: 36px;
+  font-family: "Playfair Display", serif;
+  color: #333;
+  margin-bottom: 20px;
+}
+.comment-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.comment-form table {
+  width: 100%;
+  max-width: 700px;
+}
+.comment-form td {
+  padding: 10px;
+  font-size: 18px;
+  color: #333;
+  text-align: left;
+}
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form input[type="file"],
+.comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  outline: none;
+  border-radius: 5px;
+  background: transparent;
+}
+.comment-form textarea {
+  resize: none;
+  height: 100px;
+}
+.comment-form input[type="submit"] {
+  width: 150px;
+  padding: 10px;
+  font-size: 18px;
+  background: #1c1c1c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+.comment-form input[type="submit"]:hover {
+  background: #444;
+}
+.footer-content p {
+  margin-top: 20px;
+  height: 50px;
+  background-color: #1c1c1c;
+  color: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}

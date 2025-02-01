@@ -1,0 +1,59 @@
+<%- include('./userHeader') %>
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="userSideDesigns/css/homePage.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+      integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>The news journal</title>
+  </head>
+
+  <body>
+    <main>
+      <!-- Categories -->
+
+      <section>
+        <div class="category-container">
+          <div>
+            <a href="/" class="category-item">All Blog (<%= blogData.length %>)</a>
+          </div>
+          <% categoryData.map((v,i)=>{ %>
+            <a href="/?catID=<%= v.id %>" class="category-item">
+              <%= v.categoryName %> (<%= v.blogId.length %>)
+            </a>
+            <% }) %>
+        </div>
+      </section>
+
+      <!-- Blogs -->
+
+      <section>
+        <div class="post-card-container">
+          <% blogData.map((v,i)=>{ %>
+            <div class="post-card-item">
+              <div class="post-info">
+                <img src="<%= v.image %>" alt="An image" class="post-image" height="300px" />
+                <h2 class="post-title">
+                  <%= v.blogTitle %>
+                </h2>
+                <p class="post-excerpt"><%- v.blogDescription.substring(0,100) %>.....<a href="/readMore/<%= v.id %>"
+                      class="read-more">Read More</a></p>
+              </div>
+            </div>
+            <% }) %>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2025 The news journal. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+
+  </html>

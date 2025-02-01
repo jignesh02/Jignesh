@@ -1,0 +1,82 @@
+<%- include("../layouts/header") %>
+    <div class="page-wrapper">  
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block align-items-center">
+                    <h4 class="page-title">Tables</h4>
+                    <div class="ml-auto text-right">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Library</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">View admin</h5>
+                            <div class="table-responsive">
+                                <table id="zero_config" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Profile-Pic</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Gender</th>
+                                            <th>City</th>
+                                            <th>Hobby</th>
+                                            <th>Message</th>
+                                            <th>Delete</th>
+                                            <th>Update</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% adminData.map((v,i)=>{ %>
+                                            <tr>
+                                                <td>
+                                                    <img src="<%= v.image %>" alt="User image" height="60px"
+                                                        style="border-radius: 50px;">
+                                                </td>
+                                                <td>
+                                                    <%= v.name %>
+                                                </td>
+                                                <td>
+                                                    <%= v.email %>
+                                                </td>
+                                                <td>
+                                                    <%= v.gender %>
+                                                </td>
+                                                <td>
+                                                    <%= v.city %>
+                                                </td>
+                                                <td>
+                                                    <%= v.hobby %>
+                                                </td>
+                                                <td>
+                                                    <%= v.message %>
+                                                </td>
+                                                <td>
+                                                    <a href=""><i class="fa fa-trash"></i></a>
+                                                </td>
+                                                <td>
+                                                    <a href=""><i class="fa fa-edit"></i></a>
+                                                </td>
+                                            </tr>
+                                            <% }) %>
+                                    </tbody>
+
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+        <%- include("../layouts/footer") %>

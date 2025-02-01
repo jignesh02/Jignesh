@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%= blogsData.blogTitle %>
+  </title>
+  <link rel="stylesheet" href="/userSideDesigns/css/readMore.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <header>
+    <div class="header">
+      <div class="back-btn">
+        <a href="/" class="back-arrow">
+          <button type="button">
+            <i class="ri-arrow-left-long-line"></i>
+          </button>
+        </a>
+      </div>
+      <div class="title">
+        <h1>The news journal</h1>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="blog-container">
+      <section class="blog-post-detail">
+        <div class="post-info">
+          <h1 class="post-title">
+            <%= blogsData.blogTitle %>
+          </h1>
+          <img src="<%= blogsData.image %>" alt="An image" class="post-image" height="300px" />
+          <hr />
+          <p class="post-content"><%- blogsData.blogDescription %></p>
+        </div>
+      </section>
+    </div>
+
+    <!-- comments -->
+    <section class="comment-section">
+      <h2>Leave a Comment</h2>
+      <form method="post" action="/addComments" class="comment-form">
+        <input type="hidden" name="postID" value="<%= postID %>" />
+        <table>
+          <tr>
+            <td>Name</td>
+            <td>
+              <input type="text" name="userName" placeholder="Enter your name" required />
+            </td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>
+              <input type="email" name="userEmail" placeholder="Enter your email" required />
+            </td>
+          </tr>
+          <tr>
+            <td>Image</td>
+            <td>
+              <input type="file" name="userImage" />
+            </td>
+          </tr>
+          <tr>
+            <td>Comment</td>
+            <td>
+              <textarea name="comments" placeholder="Enter your Comments" required></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: center">
+              <input type="submit" value="Submit" />
+            </td>
+          </tr>
+        </table>
+      </form>
+    </section>
+
+    <!-- view comments -->
+
+    <% viewComments.map((v,i)=>{ %>
+      <div style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
+        <h2 style="margin-bottom: 20px;">All Comments</h2>
+        <p style="font-size: 18px;">
+          <%= v.userName %>
+        </p>
+        <p style="font-size: 18px;">
+          <%= v.comments %>
+        </p>
+        <a href="" style="font-size: 20px; text-decoration: none; color: black;"><i class="ri-thumb-up-line"></i></a>
+        <a href="" style="font-size: 20px; text-decoration: none; color: black;"><i class="ri-thumb-down-line"></i> </a>
+      </div>
+      <% }) %>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 The news journal. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+
+</html>
